@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scientist Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-direction: row-reverse;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: #87ceeb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .header-content .tagline {
+            font-size: 1.2rem;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .social-links a:hover {
+            background: #e8e8e8;
+            color: #333333;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-list {
+            color: #666666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 35px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        .company-logo-placeholder {
+            color: #a0aec0;
+            font-size: 2rem;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .company {
+            color: #333333;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .location-date {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .date {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+        }
+
+        .project-item {
+            margin-bottom: 25px;
+            padding: 25px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .project-links {
+            color: #333333;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .project-links a {
+            color: #333333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        .project-link {
+            color: #333333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-metrics {
+            color: #38a169;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .project-tech {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .project-description {
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+
+        .project-date {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .education-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-item {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .company-logo {
+                width: 60px;
+                height: 60px;
+                align-self: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .education-item {
+                flex-direction: column;
+            }
+        }
+
+        .highlight {
+            background: #f0f0f0;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #333333;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-pic">
+                <img src="profile_pic.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+            </div>
+            <div class="header-content">
+                <h1>👋 Hi, I'm a Data Scientist</h1>
+                <p class="tagline">I'm a data scientist constantly learning and building in my free time. I love building predictive models, working with AI/ML, data infrastructure, and the power industry. Always testing new tech and learning something new!<br><em>B.A. in Mathematics from DePauw University.</em></p>
+                <div class="social-links">
+                    <a href="mailto:chapagainsapal@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sapalchapagain/" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/SapalChap" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://strava.app.link/kTH83tXFQWb" title="Strava">
+                        <i class="fab fa-strava"></i>
+                    </a>
+                    <a href="https://medium.com/@chapagainsapal" title="Medium">
+                        <i class="fab fa-medium"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Technical Skills Section -->
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Analytics & BI</h3>
+                    <div class="skill-list">Excel, Power BI, Tableau, Google Analytics</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-list">Python, R/R-Studio, SQL, VBA, HTML/CSS, Flask, Git</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-list">SQL Server, PostgreSQL, Azure, AWS, Snowflake, Databricks</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Enterprise Systems</h3>
+                    <div class="skill-list">Oracle NetSuite, Salesforce, SAP S/4HANA</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section class="section">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="acespowermarketing.png" alt="ACES Power Marketing" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Data Scientist</div>
+                            <div class="company">ACES Power Marketing</div>
+                            <div class="location-date">Carmel, Indiana</div>
+                        </div>
+                        <div class="date">Nov 2024 - Present</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Built and maintained <span class="highlight">XGBoost/NN forecasting models</span> for renewable and gas assets, supported traders with analytics, and led market design collaborations with ISOs/RTOs</li>
+                        <li>Developed <span class="highlight">10+ analytics web apps</span> using R/Shiny, SQL Server, and GitHub based on trading models retiring legacy systems and boosting operational efficiency by 30%</li>
+                        <li>Automated trading controls with Excel VBA and SQL Server, tracking imbalances across Allegro and OATI, integrating API data, and scheduling CRON jobs, <span class="highlight">reducing manual processing time by 90%</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="bridgebuilderstarategies.png" alt="Bridge Builders Strategies" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Data Analytics Engineer, Project Manager</div>
+                            <div class="company">Bridge Builders Strategies</div>
+                            <div class="location-date">Indianapolis, Indiana</div>
+                        </div>
+                        <div class="date">Jan 2023 - Nov 2024</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Led three projects, including a <span class="highlight">$540K government contract</span>, while managing client onboarding, timelines, and communications</li>
+                        <li>Managed a team of two to automate workflows with ETL in Python, using Airflow and Snowflake, and created final reports in Power BI, resulting in <span class="highlight">30% greater efficiency</span> and $5,000 cost savings per project</li>
+                        <li>Developed a supervised learning model to predict donor churn for a nonprofit, enabling proactive engagement strategies that <span class="highlight">reduced attrition by 20%</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="crowellp.png" alt="Crowe LLP" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Technology Consultant Intern</div>
+                            <div class="company">Crowe LLP</div>
+                            <div class="location-date">Chicago, Illinois</div>
+                        </div>
+                        <div class="date">Jun 2023 - Aug 2023</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Supported Oracle NetSuite implementations by developing Excel automations to streamline batch imports</li>
+                        <li>Initiated automation of a manual task by creating a formula-driven system to match invoices to payments, <span class="highlight">completing the task 3 weeks ahead</span> of the client deadline</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="fusioneducationgroup.png" alt="Fusion Education Group" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Business Development Intern</div>
+                            <div class="company">Fusion Education Group</div>
+                            <div class="location-date">Grand Rapids, Michigan</div>
+                        </div>
+                        <div class="date">Aug 2022 - Jan 2023</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Automated 54 files for new school opening data tracking processes with MS Excel Macros, VBA, and advanced Excel functions and merged data with Salesforce/SQL into Power BI to automate graphing</li>
+                        <li>Collaborated across accounting and information systems teams to create <span class="highlight">100+ logic models</span> and conditional statements with Excel formulas to automate the annual award ceremony process</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="owenscorning.png" alt="Owens Corning" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Business Analyst Intern</div>
+                            <div class="company">Owens Corning</div>
+                            <div class="location-date">Toledo, Ohio</div>
+                        </div>
+                        <div class="date">May 2022 - Aug 2022</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Identified <span class="highlight">$11M of invoice errors</span> by implementing a Power BI dashboard that finds outliers with 98% accuracy using statistical z-score analysis</li>
+                        <li>Utilized Microsoft Access and SQL to develop Power BI visualizations, enabling pricing analysts to better track invoice changes and <span class="highlight">improving efficiency by 20%</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="universityofhawaii.png" alt="University of Hawaii at Manoa" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <div>
+                            <div class="job-title">Research Analyst</div>
+                            <div class="company">University of Hawaii at Manoa</div>
+                            <div class="location-date">Honolulu, Hawaii</div>
+                        </div>
+                        <div class="date">May 2018 - May 2019</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Worked in a fast-paced research environment in the Department of Agriculture to conduct <span class="highlight">propagation research on the Melanthera Integrifolia (Nehe) plant</span>, analyzing effects of various rooting hormones and pesticide usage to treat Plumeria Rust</li>
+                        <li>Performed data cleaning and data analysis on collected datasets to test statistical significance, <span class="highlight">confirming effectiveness of rooting hormones</span> to help researchers and businesses in agriculture speed up their workflow when working with Nehe</li>
+                        <li>Presented data visually using various graphing techniques to faculty members and students, submitted research to AP Research, and <span class="highlight">presented findings to the American Society for Horticultural Sciences in Orlando in 2020</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Highlights Section -->
+        <section class="section">
+            <h2>🚀 Project Highlights</h2>
+            
+            <div class="project-item">
+                <div class="project-title">
+                    <a href="https://zmtoptimization.pythonanywhere.com/" class="project-link">Malatang Optimization</a>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/SapalChap/zmtoptimization" class="project-link">GitHub</a> | 
+                    <a href="https://zmtoptimization.pythonanywhere.com/" class="project-link">Live Site</a>
+                </div>
+                <div class="project-description">A web app to help you optimize your Malatang (Chinese hotpot) bowl for the best taste and nutrition. Input your favorite ingredients and get the perfect mix!</div>
+                <div class="project-metrics"><strong>Metrics:</strong> Used by 500 people monthly</div>
+                <div class="project-tech"><strong>Tech:</strong> Python backend using Flask and PuLP (for linear programming/optimization), data compiled from USDA and DoorDash, lightweight web UI, deployed on PythonAnywhere with Anaconda</div>
+                <div class="project-date">March 2025 - April 2025</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">
+                    <a href="https://sapalchap.github.io/MakeYoutubeBoringWebsite/#" class="project-link">MakeYoutubeBoring</a>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/SapalChap/MakeYoutubeBoring" class="project-link">GitHub</a> | 
+                    <a href="https://chromewebstore.google.com/detail/makeyoutubeboring/nflljpfpgaoignmlgalipgmkjhimlmfb?authuser=0&hl=en" class="project-link">Chrome Extension</a> | 
+                    <a href="https://sapalchap.github.io/MakeYoutubeBoringWebsite/#" class="project-link">Website</a>
+                </div>
+                <div class="project-description">A tool to make YouTube less distracting and more productive. Hide recommendations and unnecessary features so you can focus on what matters.</div>
+                <div class="project-metrics"><strong>Metrics:</strong> 8 daily active users on the Chrome Extension</div>
+                <div class="project-tech"><strong>Tech:</strong> Flask backend, HTML, JavaScript, CSS, Supabase backend, deployed on Vercel</div>
+                <div class="project-date">Ongoing</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">
+                    <a href="https://aiwebterminal.onrender.com/" class="project-link">AI Web Terminal (Private Repo)</a>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/SapalChap/AiWebTerminal" class="project-link">GitHub (Private)</a> | 
+                    <a href="https://aiwebterminal.onrender.com/" class="project-link">Live Site</a>
+                </div>
+                <div class="project-description"><em>Work in progress.</em> An AI-powered web terminal that lets you use different GPTs like a Linux-based terminal—making AI interaction fast and intuitive.</div>
+                <div class="project-tech"><strong>Tech:</strong> Python backend to run APIs, OpenRouter API, Supabase database, deployed on Render</div>
+                <div class="project-date">September 2025 - Present</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">
+                    <a href="https://github.com/SapalChap/dbETLForBestTimeToRun" class="project-link">dbETLForBestTimeToRun</a>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/SapalChap/dbETLForBestTimeToRun" class="project-link">GitHub</a>
+                </div>
+                <div class="project-description"><em>Work in progress.</em> A data pipeline designed to extract, transform, and load (ETL) running time information from various sources, aiming to help runners find the best time for their next run based on historical and real-time data.</div>
+                <div class="project-tech"><strong>Tech:</strong> Python script currently running as a cron job on Vercel. Consolidates data from OpenWeather API, API Ninjas, and UV data sources, performs calculations, and stores results in Supabase</div>
+                <div class="project-date">Work in Progress</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">
+                    <a href="https://medium.com/@yourprofile" class="project-link">Maven Analytics: Writer for Learning Data</a>
+                </div>
+                <div class="project-links">
+                    <a href="https://medium.com/@yourprofile" class="project-link">Medium Profile</a>
+                </div>
+                <div class="project-description">Contributing data science articles and tutorials to help others learn analytics and data science concepts. Writing about real-world applications, best practices, and emerging trends in the field.</div>
+                <div class="project-metrics"><strong>Metrics:</strong> ~1000 monthly readers</div>
+                <div class="project-tech"><strong>Focus:</strong> Data Science Education, Technical Writing, Analytics Best Practices</div>
+                <div class="project-date">October 2024 - Present</div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
